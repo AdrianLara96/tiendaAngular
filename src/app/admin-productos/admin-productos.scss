@@ -1,0 +1,144 @@
+.admin-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 1rem;
+
+  h1 {
+    margin-bottom: 2rem;
+    color: #181A1A;
+    text-align: center;
+  }
+}
+
+.formulario-section,
+.listado-section {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background-color: #BEB3AD;
+  border-radius: 8px;
+
+  h2 {
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    color: #181A1A;
+    font-size: 1.25rem;
+    border-bottom: 2px solid #441D17;
+    padding-bottom: 0.5rem;
+  }
+}
+
+.campo-formulario {
+  margin-bottom: 1.25rem;
+
+  label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #181A1A;
+  }
+
+  input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #181A1A;
+    border-radius: 4px;
+    font-size: 1rem;
+    background-color: #E4E4E4;
+    color: #181A1A;
+
+    &:focus {
+      outline: none;
+      border-color: #441D17;
+      background-color: #fff;
+    }
+  }
+}
+
+.mensaje-error {
+  color: #441D17;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+  min-height: 1.25rem;
+
+  span {
+    display: block;
+  }
+}
+
+.botones {
+  margin-top: 1.5rem;
+
+  .btn-enviar {
+    padding: 0.75rem 2rem;
+    background-color: #441D17;
+    color: #E4E4E4;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+
+    &:hover:not(:disabled) {
+      opacity: 0.9;
+    }
+
+    &:disabled {
+      background-color: #181A1A;
+      color: #BEB3AD;
+      cursor: not-allowed;
+    }
+  }
+}
+
+.tabla-productos {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  background-color: #E4E4E4;
+  border-radius: 6px;
+  overflow: hidden;
+
+  th,
+  td {
+    padding: 0.75rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid #181A1A;
+  }
+
+  th {
+    background-color: #181A1A;
+    color: #E4E4E4;
+    font-weight: 500;
+  }
+
+  tbody tr {
+    &:hover {
+      background-color: #BEB3AD;
+    }
+  }
+
+  .btn-eliminar {
+    padding: 0.4rem 0.8rem;
+    background-color: #441D17;
+    color: #E4E4E4;
+    border: none;
+    border-radius: 4px;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+}
+
+.mensaje-vacio {
+  text-align: center;
+  padding: 2rem;
+  color: #181A1A;
+  background-color: #E4E4E4;
+  border-radius: 6px;
+  border: 1px dashed #181A1A;
+}

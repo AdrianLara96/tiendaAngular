@@ -1,0 +1,136 @@
+<!-- ./src/app/admin-productos/admin-productos.html -->
+
+<div class="admin-container">
+  
+    <h1>Administración de Productos</h1>
+
+    <!-- Formulario de añadido -->
+    <section class="formulario-section">
+        <h2>Añadir Nuevo Producto</h2>
+
+        <!-- 
+        [formGroup] vincula el formulario HTML con el FormGroup del componente admin-productos.ts
+        (ngSubmit) ejecuta onSubmit() cuando se envía el formulario
+        -->
+        <form [formGroup]="formularioProducto" (ngSubmit)="onSubmit()">
+        
+        <div class="campo-formulario">
+            <label for="nombre">Nombre del producto:</label>
+            <input 
+                type="text" 
+                id="nombre" 
+                formControlName="nombre"
+                placeholder="Ej: Flauta travesera"
+            >
+            
+            <!-- Mensajes de error para el campo nombre -->
+            <div class="mensaje-error" *ngIf="formularioProducto.get('nombre')?.touched && formularioProducto.get('nombre')?.invalid">
+            <span *ngIf="formularioProducto.get('nombre')?.errors?.['required']">
+                El nombre es obligatorio
+            </span>
+            <span *ngIf="formularioProducto.get('nombre')?.errors?.['minlength']">
+                Mínimo 3 caracteres
+            </span>
+            </div>
+        </div>
+
+        <div class="campo-formulario">
+            <label for="precio">Precio (€):</label>
+            <input 
+            type="number" 
+            id="precio" 
+            formControlName="precio"
+            placeholder="Ej: 59.99"
+            step="0.01"
+            min="0"
+            >
+            
+            <!-- Mensajes de error para el campo precio -->
+            <div class="mensaje-error" *ngIf="formularioProducto.get('precio')?.touched && formularioProducto.get('precio')?.invalid">
+            <span *ngIf="formularioProducto.get('precio')?.errors?.['required']">
+                El precio es obligatorio
+            </span>
+            <span *ngIf="formularioProducto.get('precio')?.errors?.['min']">
+                El precio debe ser mayor que 0
+            </span>
+            </div>
+        </div>
+
+        <div class="campo-formulario">
+            <label for="stock">Stock:</label>
+            <input 
+            type="number" 
+            id="stock" 
+            formControlName="stock"
+            placeholder="Ej: 10"
+            min="0"
+            >
+            
+            <!-- Mensajes de error para el campo stock -->
+            <div class="mensaje-error" *ngIf="formularioProducto.get('stock')?.touched && formularioProducto.get('stock')?.invalid">
+            <span *ngIf="formularioProducto.get('stock')?.errors?.['required']">
+                El stock es obligatorio
+            </span>
+            <span *ngIf="formularioProducto.get('stock')?.errors?.['min']">
+                El stock no puede ser negativo
+            </span>
+            </div>
+        </div>
+
+        <div class="botones">
+            <!-- 
+            [disabled] el botón solo está activo si el formulario es válido
+            -->
+            <button 
+            type="submit" 
+            [disabled]="formularioProducto.invalid"
+            class="btn-enviar"
+            >
+            Añadir producto
+            </button>
+        </div>
+
+        </form>
+    </section>
+
+    <!-- Sección de listado de productos existentes -->
+    <section class="listado-section">
+        <h2>Productos en Catálogo</h2>
+
+        <!-- Tabla de productos -->
+        <table class="tabla-productos">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Stock</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let producto of getProductos()">
+            <td>{{ producto.id }}</td>
+            <td>{{ producto.nombre }}</td>
+            <td>{{ producto.precio | number:'1.2-2' }} €</td>
+            <td>{{ producto.stock }}</td>
+            <td>
+                <!-- Botón para eliminar producto -->
+                <button 
+                (click)="eliminarProducto(producto.id)"
+                class="btn-eliminar"
+                >
+                Eliminar
+                </button>
+            </td>
+            </tr>
+        </tbody>
+        </table>
+
+        <!-- Mensaje si no hay productos -->
+        <div *ngIf="getProductos().length === 0" class="mensaje-vacio">
+        <p>No hay productos en el catálogo</p>
+        </div>
+    </section>
+
+</div>

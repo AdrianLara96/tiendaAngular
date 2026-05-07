@@ -1,0 +1,38 @@
+<!-- ./src/app/listado-productos/listado-productos.html -->
+
+<h1 class="title">Esta es la lista de productos</h1>
+
+<!-- 
+    Este bloque se mostrará solo si nuestro array 'productos' está vacío
+-->
+<div *ngIf="productos.length === 0" class="mensaje-vacio">
+    <p>No hay productos disponibles</p>
+</div>
+
+<div class="wrapper">
+
+    <div class="productos-container">
+        
+        <div 
+            *ngFor="let prod of productos" 
+            class="tarjeta"
+            [ngClass]="{'sin-stock': prod.stock === 0}"
+        >
+
+            <div class="info">
+                <h3 class="nombre">{{ prod.nombre }}</h3>
+                <p class="precio">{{ prod.precio | number: '1.2-2' }} €</p>
+                <span class="stock">Stock: {{ prod.stock }}</span>
+            </div>
+
+            <!-- Botón de añadir al carrito -->
+            <button 
+                class="btn-add" 
+                [disabled]="prod.stock <= 0"
+                (click)="onAddToCart(prod)"
+            >
+                Añadir al carrito
+            </button>
+        </div>
+    </div>
+</div>

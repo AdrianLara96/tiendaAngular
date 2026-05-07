@@ -1,0 +1,25 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1rem;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+  }
+}
+
+.panel {
+  background-color: #BEB3AD;
+  border-radius: 8px;
+  padding: 1rem;
+  flex: 1;
+
+  h3 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: #181A1A;
+    border-bottom: 2px solid #441D17;
+    padding-bottom: 0.5rem;
+  }
+}

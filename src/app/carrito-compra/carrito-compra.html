@@ -1,0 +1,33 @@
+<!-- ./src/app/carrito-compra/carrito-compra.html -->
+
+<h1 class="title">Este es el carrito de productos</h1>
+
+<!-- 
+    Este bloque se mostrará solo si nuestro array 'carrito' está vacío
+-->
+<div *ngIf="carrito.length === 0" class="carrito-vacio">
+    <p>Tu carrito está vacío</p>
+</div>
+
+<div class="wrapper">
+
+    <div class="carrito-container">
+
+        <!-- Listado de productos en el carrito -->
+        <div *ngFor="let item of carrito" class="carrito-item">
+        
+            <div class="item-info">
+                <span class="item-nombre">{{ item.nombre }}</span>
+                <span class="item-precio">{{ item.precio | number:'1.2-2' }} €</span>
+            </div>
+
+            <!-- Botón para eliminar del carrito -->
+            <button 
+                class="btn-remove"
+                (click)="onRemoveFromCart(item)"
+            >
+                Eliminar
+            </button>
+        </div>
+    </div>
+</div>

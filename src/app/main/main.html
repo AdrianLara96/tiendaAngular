@@ -1,0 +1,20 @@
+<!-- 
+    ./src/app/main/main.html 
+    Componente main (tienda) 
+-->
+
+ <div class="wrapper">
+    <div class="panel">
+        <app-listado-productos 
+            [productos]="productos"
+            (addToCart)="anadirAlCarrito($event)"
+        ></app-listado-productos>
+    </div>
+    <div class="panel">
+        <h3>Tu carrito</h3>
+        <app-carrito-compra
+            [carrito]="carrito"
+            (removeFromCart)="eliminarDelCarrito($event)"
+        ></app-carrito-compra>
+    </div>
+</div>
