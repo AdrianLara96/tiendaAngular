@@ -2,10 +2,14 @@
 
 Proyecto Angular para la gestión de una tienda de música con carrito de compra y panel de administración.
 
+---
+
 ## Requisitos previos
 - Node.js (versión 18 o superior)
 - npm
 - Angular CLI (versión 18 o superior)
+
+---
 
 ## Instalación
 1. Clonar el repositorio:
@@ -16,6 +20,8 @@ Proyecto Angular para la gestión de una tienda de música con carrito de compra
    npm install
 4. Arrancar el servidor de desarrollo:
    ng serve
+
+---
 
 ## Estructura del proyecto
 src/app/
@@ -31,6 +37,8 @@ src/app/
 ├── footer/                    # Pie de página global
 ├── app.module.ts              # Módulo raíz con configuración de HttpClient y rutas
 └── app-routing.module.ts      # Configuración del enrutador
+
+---
 
 ## Funcionalidades implementadas
 
@@ -66,6 +74,8 @@ src/app/
 - Indicador visual de ruta activa mediante `routerLinkActive`.
 - Redirección de rutas no definidas a `/tienda`.
 - Navegación sin recarga de página mediante Angular Router.
+
+---
 
 ## Arquitectura del proyecto
 ┌─────────────────────────────────┐
@@ -120,6 +130,8 @@ src/app/
          │ • Manejo de errores con catchError() │
          │ • Método privado handleError()       │
          └──────────────────────────────────────┘
+
+---
 
 ## Autor
 Adrián Lara Moncayo
