@@ -1,12 +1,12 @@
 <!-- ./src/app/listado-productos/listado-productos.html -->
 
-<h1 class="title">Esta es la lista de productos</h1>
+<h1 class="title">Catálogo de productos</h1>
 
 <!-- 
     Este bloque se mostrará solo si nuestro array 'productos' está vacío
 -->
 <div *ngIf="productos.length === 0" class="mensaje-vacio">
-    <p>No hay productos disponibles</p>
+    <p>¡Ups! Parece que no nos quedan instrumentos en stock.</p>
 </div>
 
 <div class="wrapper">
@@ -18,8 +18,16 @@
             class="tarjeta"
             [ngClass]="{'sin-stock': prod.stock === 0}"
         >
+            <div class="tarjeta-imagen">
+                <img
+                    [src]="prod.imagen || 'assets/images/producto-placeholder.png'"
+                    [alt]="prod.nombre"
+                    onerror="this.src='././assets/images/producto-placeholder.png'"
+                >
+            </div>
 
             <div class="info">
+                <span class="categoria">{{ prod.categoria || 'Sin categoría' }}</span>
                 <h3 class="nombre">{{ prod.nombre }}</h3>
                 <p class="precio">{{ prod.precio | number: '1.2-2' }} €</p>
                 <span class="stock">Stock: {{ prod.stock }}</span>
@@ -31,7 +39,7 @@
                 [disabled]="prod.stock <= 0"
                 (click)="onAddToCart(prod)"
             >
-                Añadir al carrito
+                {{ prod.stock <= 0 ? 'Agotado' : 'Añadir al carrito' }}
             </button>
         </div>
     </div>

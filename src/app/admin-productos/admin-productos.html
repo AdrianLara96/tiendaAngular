@@ -1,8 +1,8 @@
 <!-- ./src/app/admin-productos/admin-productos.html -->
 
+<h1>Administración de Productos</h1>
 <div class="admin-container">
   
-    <h1>Administración de Productos</h1>
 
     <!-- Formulario de añadido -->
     <section class="formulario-section">
@@ -98,34 +98,36 @@
         <h2>Productos en Catálogo</h2>
 
         <!-- Tabla de productos -->
-        <table class="tabla-productos">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nombre</th>
-                <th>Precio</th>
-                <th>Stock</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let producto of getProductos()">
-            <td>{{ producto.id }}</td>
-            <td>{{ producto.nombre }}</td>
-            <td>{{ producto.precio | number:'1.2-2' }} €</td>
-            <td>{{ producto.stock }}</td>
-            <td>
-                <!-- Botón para eliminar producto -->
-                <button 
-                (click)="eliminarProducto(producto.id)"
-                class="btn-eliminar"
-                >
-                Eliminar
-                </button>
-            </td>
-            </tr>
-        </tbody>
-        </table>
+        <div class="tabla-wrapper">
+            <table class="tabla-productos">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Precio</th>
+                        <th>Stock</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let producto of getProductos()">
+                    <td>{{ producto.id }}</td>
+                    <td>{{ producto.nombre }}</td>
+                    <td>{{ producto.precio | number:'1.2-2' }} €</td>
+                    <td>{{ producto.stock }}</td>
+                    <td>
+                        <!-- Botón para eliminar producto -->
+                        <button 
+                        (click)="eliminarProducto(producto.id)"
+                        class="btn-eliminar"
+                        >
+                        Eliminar
+                        </button>
+                    </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
         <!-- Mensaje si no hay productos -->
         <div *ngIf="getProductos().length === 0" class="mensaje-vacio">

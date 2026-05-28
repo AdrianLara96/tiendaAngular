@@ -1,0 +1,43 @@
+<!-- ./src/app/lista-usuarios/lista-usuarios.html -->
+<div class="usuarios-container">
+
+  <h1>Lista de Usuarios</h1>
+
+  <!-- Mostrar mensaje de carga mientras se obtienen datos -->
+  <div *ngIf="cargando" class="mensaje-carga">
+    <p>Cargando usuarios...</p>
+  </div>
+
+  <!-- Mostrar mensaje de error si la petición falla -->
+  <div *ngIf="error" class="mensaje-error">
+    <p>{{ error }}</p>
+  </div>
+
+  <!-- Mostrar mensaje si no hay usuarios para mostrar -->
+  <div *ngIf="!cargando && !error && usuarios.length === 0" class="mensaje-vacio">
+    <p>No hay usuarios para mostrar</p>
+  </div>
+
+  <!-- Listado de usuarios usando *ngFor -->
+  <div *ngIf="usuarios.length > 0" class="lista-usuarios">
+    <div *ngFor="let usuario of usuarios" class="usuario-tarjeta">
+      
+      <!-- Imagen genérica de usuario -->
+      <div class="usuario-imagen">
+        <img 
+          src="assets/images/usuario.png" 
+          alt="Foto de {{ usuario.name }}"
+          onerror="this.src='assets/images/usuario.png'"
+        >
+      </div>
+
+      <!-- Información del usuario -->
+      <div class="usuario-info">
+        <h3 class="usuario-nombre">{{ usuario.name }}</h3>
+        <p class="usuario-email">{{ usuario.email }}</p>
+      </div>
+
+    </div>
+  </div>
+
+</div>

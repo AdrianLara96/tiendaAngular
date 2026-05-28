@@ -8,9 +8,9 @@ Proyecto Angular para la gestión de una tienda de música con carrito de compra
 
 ## Instalación
 1. Clonar el repositorio:
-   git clone [URL_DEL_REPOSITORIO]
+   git clone https://github.com/AdrianLara96/tiendaAngular
 2. Entrar en la carpeta:
-   cd app-tarea-unidad1
+   cd tiendaAngular
 3. Instalar dependencias:
    npm install
 4. Arrancar el servidor de desarrollo:
@@ -39,22 +39,23 @@ Adrián Lara Moncayo
         └────────┬────────────────────────┘
                  │ @Input() / @Output()
                  ▼
-┌────────────────────────┐  ┌───────────────────────────┐
-│   LISTADO-PRODUCTOS    │  │       CARRITO-COMPRA      │
-│  (Presenta catálogo)   │  │     (Presenta carrito)    │
-├────────────────────────┤  ├───────────────────────────┤
-│ • @Input() productos   │  │ • @Input() carrito        │
-│ • @Output() addToCart  │  │ • @Output() removeFromCart│
-│ • No accede al servicio│  │ • No accede al servicio   │
-└────────┬───────────────┘  └────────┬──────────────────┘
-         │                       │
-         ▼                       ▼
-        ┌──────────────────────────────────────┐
-        │           TIENDA SERVICE             │
-        │      (Única fuente de verdad)        │
-        ├──────────────────────────────────────┤
-        │ • Datos privados: productos, carrito │
-        │ • Métodos públicos:                  │
-        │   - getProductos(), getCarrito()     │
-        │   - addToCart(), removeFromCart()    │
-        └──────────────────────────────────────┘
+        ┌────────────────────────┐  ┌───────────────────────────┐
+        │   LISTADO-PRODUCTOS    │  │       CARRITO-COMPRA      │
+        │  (Presenta catálogo)   │  │     (Presenta carrito)    │
+        ├────────────────────────┤  ├───────────────────────────┤
+        │ • @Input() productos   │  │ • @Input() carrito        │
+        │ • @Output() addToCart  │  │ • @Output() removeFromCart│
+        │ • No accede al servicio│  │ • No accede al servicio   │
+        └────────┬───────────────┘  └────────┬──────────────────┘
+                │                       │
+                ▼                       ▼
+                ┌──────────────────────────────────────┐
+                │           TIENDA SERVICE             │
+                │      (Única fuente de verdad)        │
+                ├──────────────────────────────────────┤
+                │ • Datos privados: productos, carrito │
+                │ • Métodos públicos:                  │
+                │   - getProductos(), getCarrito()     │
+                │   - addToCart(), removeFromCart()    │
+                └──────────────────────────────────────┘
+---

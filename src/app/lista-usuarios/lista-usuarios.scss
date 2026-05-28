@@ -1,0 +1,155 @@
+// ./src/app/lista-usuarios/lista-usuarios.scss
+
+// Contenedor principal de la lista de usuarios
+.usuarios-container {
+  padding: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  h1 {
+    margin-bottom: 2rem;
+    color: #1a2a3a;
+    text-align: center;
+    font-size: 1.75rem;
+  }
+}
+
+// Mensaje de carga de datos
+.mensaje-carga {
+  text-align: center;
+  padding: 3rem 2rem;
+  color: #1a2a3a;
+  background-color: #faf9f6;
+  border-radius: 8px;
+  border: 1px dashed #5b7c9a;
+
+  p {
+    margin: 0;
+    font-size: 1.1rem;
+  }
+}
+
+// Mensaje de error de petición
+.mensaje-error {
+  text-align: center;
+  padding: 3rem 2rem;
+  color: #8b3a3a;
+  background-color: #faf9f6;
+  border-radius: 8px;
+  border: 1px solid #8b3a3a;
+
+  p {
+    margin: 0;
+    font-size: 1rem;
+  }
+}
+
+// Mensaje cuando no hay usuarios disponibles
+.mensaje-vacio {
+  text-align: center;
+  padding: 3rem 2rem;
+  color: #1a2a3a;
+  background-color: #faf9f6;
+  border-radius: 8px;
+  border: 1px dashed #5b7c9a;
+
+  p {
+    margin: 0;
+    font-size: 1.1rem;
+  }
+}
+
+// Contenedor flexible para las tarjetas de usuarios
+.lista-usuarios {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+// Tarjeta individual de usuario
+.usuario-tarjeta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #faf9f6;
+  border-radius: 12px;
+  padding: 1.5rem;
+  border: 1px solid #e0d8c8;
+  box-shadow: 0 2px 8px rgba(74, 94, 122, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 280px;
+  flex-shrink: 0;
+
+  // Efecto hover: mover tarjeta hacia arriba
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 20px rgba(74, 94, 122, 0.15);
+  }
+
+  // Imagen del usuario
+  .usuario-imagen {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 1rem;
+    overflow: hidden;
+    border-radius: 50%;
+    border: 3px solid #5b7c9a;
+    background-color: #f0ede8;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    &:hover img {
+      transform: scale(1.05);
+    }
+  }
+
+  // Información del usuario
+  .usuario-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    text-align: center;
+
+    .usuario-nombre {
+      margin: 0;
+      font-size: 1.1rem;
+      color: #1a2a3a;
+      font-weight: 600;
+    }
+
+    .usuario-email {
+      margin: 0;
+      font-size: 0.9rem;
+      color: #5b7c9a;
+      word-break: break-all;
+    }
+
+    .usuario-username {
+      font-size: 0.8rem;
+      color: #1a2a3a;
+      background-color: #e8f0f8;
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      font-weight: 500;
+    }
+  }
+}
+
+// Ajustes para pantallas pequeñas
+@media (max-width: 600px) {
+  .usuarios-container {
+    padding: 1rem;
+  }
+
+  .usuario-tarjeta {
+    width: 100%;
+    max-width: 320px;
+  }
+}

@@ -1,34 +1,56 @@
+// ./src/app/carrito-compra/carrito-compra.scss
+
+// Título principal del carrito
 .title {
-  margin-bottom: 1rem;
-  color: #181A1A;
+  margin-bottom: 1.5rem;
+  color: #1a2a3a;
+  text-align: center;
+  font-size: 1.75rem;
 }
 
+// Mensaje cuando el carrito está vacío
 .carrito-vacio {
   text-align: center;
-  padding: 2rem;
-  color: #181A1A;
-  background-color: #BEB3AD;
+  padding: 3rem 2rem;
+  color: #1a2a3a;
+  background-color: #faf9f6;
   border-radius: 8px;
+  border: 1px dashed #5b7c9a;
 }
 
+// Contenedor flexible para los elementos del carrito
 .wrapper {
   width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
+// Contenedor de ítems con flexbox
 .carrito-container {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 1rem;
 }
 
+// Ítem individual del carrito
 .carrito-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: #faf9f6;
+  border-radius: 8px;
   padding: 1rem;
-  background-color: #BEB3AD;
-  border-radius: 6px;
+  border: 1px solid #e0d8c8;
+  box-shadow: 0 2px 6px rgba(74, 94, 122, 0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 
+  // Efecto hover sutil
+  &:hover {
+    transform: translateX(4px);
+    box-shadow: 0 4px 12px rgba(74, 94, 122, 0.1);
+  }
+
+  // Información del producto (nombre y precio)
   .item-info {
     display: flex;
     flex-direction: column;
@@ -36,27 +58,36 @@
 
     .item-nombre {
       font-weight: 500;
-      color: #181A1A;
+      color: #1a2a3a;
+      font-size: 1rem;
     }
 
     .item-precio {
-      color: #441D17;
       font-weight: bold;
+      color: #5b7c9a;
+      font-size: 1.1rem;
     }
   }
 
+  // Botón de eliminar producto
   .btn-remove {
     padding: 0.5rem 1rem;
-    background-color: #441D17;
-    color: #E4E4E4;
+    background-color: #1a2a3a;
+    color: #faf9f6;
     border: none;
-    border-radius: 4px;
+    border-radius: 6px;
     font-size: 0.9rem;
+    font-weight: 500;
     cursor: pointer;
-    transition: opacity 0.2s ease;
+    transition: all 0.2s ease;
 
     &:hover {
-      opacity: 0.9;
+      background-color: #5b7c9a;
+      transform: translateY(-2px);
+    }
+
+    &:active {
+      transform: translateY(0);
     }
   }
 }

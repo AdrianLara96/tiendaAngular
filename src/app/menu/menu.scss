@@ -1,8 +1,14 @@
+// ./src/app/menu/menu.scss
+
+// Contenedor principal del menú de navegación
 .menu {
-  background-color: #181A1A;
+  display: flex;
+  justify-content: center;
+  background-color: #1a2a3a;
   padding: 1rem 1.5rem;
   border-radius: 12px;
   margin: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 
   ul {
     display: flex;
@@ -17,25 +23,27 @@
     margin: 0;
   }
 
+  // Enlaces de navegación con estilo de botón
   a {
     display: inline-block;
-    color: #E4E4E4;
+    color: #f5f5f0;
     text-decoration: none;
-    font-size: 1.25rem;
+    font-size: 1.1rem;
     font-weight: 500;
     padding: 0.75rem 1.5rem;
     border-radius: 8px;
     transition: all 0.3s ease;
-    background-color: #441D17;
+    background-color: #5b7c9a;
 
     &:hover {
       background-color: #BEB3AD;
-      color: #181A1A;
+      color: #1a2a3a;
     }
 
+    // Clase activa cuando la ruta coincide
     &.activo {
       background-color: #BEB3AD;
-      color: #181A1A;
+      color: #1a2a3a;
       font-weight: bold;
     }
   }

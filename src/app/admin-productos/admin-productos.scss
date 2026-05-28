@@ -1,32 +1,72 @@
+// ./src/app/admin-productos/admin-productos.scss
+
+// Contenedor principal de administración
 .admin-container {
-  max-width: 1000px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 1.5rem;
+  max-width: 95%;
   margin: 0 auto;
-  padding: 1rem;
 
   h1 {
-    margin-bottom: 2rem;
-    color: #181A1A;
+    margin-bottom: 1rem;
+    color: #1a2a3a;
     text-align: center;
+    font-size: 1.75rem;
+  }
+
+  // En pantallas medianas o superiores, mostrar secciones en fila
+  @media (min-width: 900px) {
+    flex-direction: row;
+    align-items: flex-start;
   }
 }
 
-.formulario-section,
-.listado-section {
-  margin-bottom: 2rem;
-  padding: 1.5rem;
-  background-color: #BEB3AD;
+// Sección de formulario: ocupar más espacio (2/3 del contenedor)
+.formulario-section {
+  flex: 2;
+  background-color: #faf9f6;
   border-radius: 8px;
+  padding: 1.5rem;
+  border: 1px solid #e0d8c8;
+  box-shadow: 0 2px 8px rgba(74, 94, 122, 0.08);
 
   h2 {
     margin-top: 0;
     margin-bottom: 1.5rem;
-    color: #181A1A;
+    color: #1a2a3a;
     font-size: 1.25rem;
-    border-bottom: 2px solid #441D17;
+    border-bottom: 2px solid #5b7c9a;
+    padding-bottom: 0.75rem;
+  }
+}
+
+// Sección de listado: ocupar menos espacio (1/3 del contenedor)
+.listado-section {
+  flex: 1;
+  background-color: #faf9f6;
+  border-radius: 8px;
+  padding: 1.5rem;
+  border: 1px solid #e0d8c8;
+  box-shadow: 0 2px 8px rgba(74, 94, 122, 0.08);
+  min-width: 280px;
+  
+  // Contenedor con scroll horizontal para la tabla
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+
+  h2 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: #1a2a3a;
+    font-size: 1.1rem;
+    border-bottom: 2px solid #5b7c9a;
     padding-bottom: 0.5rem;
   }
 }
 
+// Campo individual del formulario
 .campo-formulario {
   margin-bottom: 1.25rem;
 
@@ -34,111 +74,201 @@
     display: block;
     margin-bottom: 0.5rem;
     font-weight: 500;
-    color: #181A1A;
+    color: #1a2a3a;
   }
 
   input {
-    width: 100%;
+    width: 90%;
     padding: 0.75rem;
-    border: 1px solid #181A1A;
-    border-radius: 4px;
+    border: 1px solid #e0d8c8;
+    border-radius: 6px;
     font-size: 1rem;
-    background-color: #E4E4E4;
-    color: #181A1A;
+    background-color: #fff;
+    color: #1a2a3a;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
 
     &:focus {
       outline: none;
-      border-color: #441D17;
-      background-color: #fff;
+      border-color: #5b7c9a;
+      box-shadow: 0 0 0 3px rgba(91, 124, 154, 0.2);
     }
   }
 }
 
+// Mensajes de validación de formulario
 .mensaje-error {
-  color: #441D17;
-  font-size: 0.875rem;
+  color: #8b3a3a;
+  font-size: 0.85rem;
   margin-top: 0.25rem;
   min-height: 1.25rem;
 
   span {
     display: block;
+
+    &::before {
+      content: "⚠ ";
+    }
   }
 }
 
+// Contenedor de botones del formulario
 .botones {
   margin-top: 1.5rem;
 
   .btn-enviar {
-    padding: 0.75rem 2rem;
-    background-color: #441D17;
-    color: #E4E4E4;
+    width: 50%;
+    padding: 0.875rem;
+    background-color: #5b7c9a;
+    color: #faf9f6;
     border: none;
-    border-radius: 4px;
+    border-radius: 6px;
     font-size: 1rem;
     font-weight: 500;
     cursor: pointer;
-    transition: opacity 0.2s ease;
+    transition: all 0.2s ease;
 
     &:hover:not(:disabled) {
-      opacity: 0.9;
+      background-color: #1a2a3a;
+      transform: translateY(-2px);
     }
 
     &:disabled {
-      background-color: #181A1A;
-      color: #BEB3AD;
+      background-color: #d4cfc9;
+      color: #8a8580;
       cursor: not-allowed;
     }
   }
 }
 
-.tabla-productos {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 1rem;
-  background-color: #E4E4E4;
-  border-radius: 6px;
-  overflow: hidden;
-
-  th,
-  td {
-    padding: 0.75rem 1rem;
-    text-align: left;
-    border-bottom: 1px solid #181A1A;
+// Contenedor envolvente para la tabla con scroll
+.tabla-wrapper {
+  overflow-x: auto;
+  margin: 0 -1.5rem;
+  padding: 0 1.5rem;
+  
+  // Ocultar barra de scroll visualmente pero mantener funcionalidad
+  scrollbar-width: thin;
+  scrollbar-color: #5b7c9a #faf9f6;
+  
+  &::-webkit-scrollbar {
+    height: 6px;
   }
-
-  th {
-    background-color: #181A1A;
-    color: #E4E4E4;
-    font-weight: 500;
+  
+  &::-webkit-scrollbar-track {
+    background: #faf9f6;
+    border-radius: 3px;
   }
-
-  tbody tr {
+  
+  &::-webkit-scrollbar-thumb {
+    background: #5b7c9a;
+    border-radius: 3px;
+    
     &:hover {
-      background-color: #BEB3AD;
-    }
-  }
-
-  .btn-eliminar {
-    padding: 0.4rem 0.8rem;
-    background-color: #441D17;
-    color: #E4E4E4;
-    border: none;
-    border-radius: 4px;
-    font-size: 0.875rem;
-    cursor: pointer;
-    transition: opacity 0.2s ease;
-
-    &:hover {
-      opacity: 0.9;
+      background: #1a2a3a;
     }
   }
 }
 
+// Tabla de productos del catálogo
+.tabla-productos {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+  min-width: 400px;
+
+  th,
+  td {
+    padding: 0.5rem 0.4rem;
+    text-align: left;
+    border-bottom: 1px solid #e0d8c8;
+    white-space: nowrap;
+  }
+
+  th {
+    background-color: #1a2a3a;
+    color: #faf9f6;
+    font-weight: 500;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    position: sticky;
+    left: 0;
+    z-index: 1;
+  }
+
+  tbody tr {
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background-color: #f0ede8;
+    }
+
+    &:last-child td {
+      border-bottom: none;
+    }
+  }
+
+  // Columna de acciones: ajustar ancho
+  td:last-child {
+    text-align: center;
+    width: 90px;
+    min-width: 90px;
+  }
+
+  // Columna de precio: alinear a la derecha
+  td:nth-child(3) {
+    text-align: right;
+    font-family: monospace;
+  }
+
+  // Columna de stock: centrar
+  td:nth-child(4) {
+    text-align: center;
+  }
+
+  // Botón de eliminar en la tabla
+  .btn-eliminar {
+    padding: 0.35rem 0.7rem;
+    background-color: #1a2a3a;
+    color: #faf9f6;
+    border: none;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+
+    &:hover {
+      background-color: #5b7c9a;
+      transform: translateY(-1px);
+    }
+  }
+}
+
+// Ajustes específicos para pantallas muy pequeñas
+@media (max-width: 599px) {
+  .tabla-productos {
+    font-size: 0.8rem;
+    
+    th,
+    td {
+      padding: 0.4rem 0.3rem;
+    }
+    
+    .btn-eliminar {
+      padding: 0.3rem 0.6rem;
+      font-size: 0.7rem;
+    }
+  }
+}
+
+// Mensaje cuando no hay productos en el catálogo
 .mensaje-vacio {
   text-align: center;
-  padding: 2rem;
-  color: #181A1A;
-  background-color: #E4E4E4;
+  padding: 1.5rem;
+  color: #1a2a3a;
+  background-color: #f0ede8;
   border-radius: 6px;
-  border: 1px dashed #181A1A;
+  border: 1px dashed #5b7c9a;
+  font-size: 0.9rem;
 }

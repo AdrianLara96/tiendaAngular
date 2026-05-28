@@ -17,23 +17,57 @@ export class Tienda {
 
   // Lista principal de productos del catálogo
   // Se declara como private para encapsular y solo acceder mediante métodos
-  private productos: any[] = [
-    { 
-      id: 1,
-      nombre: 'Flauta dulce', 
-      precio: 7.50, 
-      stock: 5 },
-    { 
-      id: 2,
-      nombre: 'Clarinete', 
-      precio: 225.00, 
-      stock: 3 },
-    { 
-      id: 3,
-      nombre: 'Saxofón', 
-      precio: 400.00, 
-      stock: 1 }
-  ];
+
+private productos: any[] = [
+  { 
+    id: 1,
+    nombre: 'Flauta dulce', 
+    precio: 7.50, 
+    stock: 5,
+    categoria: 'Viento-madera',
+    imagen: 'assets/images/flauta.jpg'
+  },
+  { 
+    id: 2,
+    nombre: 'Guitarra clásica', 
+    precio: 225.00, 
+    stock: 3,
+    categoria: 'Cuerda',
+    imagen: 'assets/images/guitarra.jpg'
+  },
+  { 
+    id: 3,
+    nombre: 'Saxofón', 
+    precio: 400.00, 
+    stock: 1,
+    categoria: 'Viento-metal',
+    imagen: 'assets/images/saxofon.jpg'
+  },
+  { 
+    id: 4,
+    nombre: 'Clarinete', 
+    precio: 320.00, 
+    stock: 2,
+    categoria: 'Viento-madera',
+    imagen: 'assets/images/clarinete.jpg'
+  },
+  { 
+    id: 5,
+    nombre: 'Timbales', 
+    precio: 180.00, 
+    stock: 1,
+    categoria: 'Percusión',
+    imagen: 'assets/images/timbales.jpg'
+  },
+  { 
+    id: 6,
+    nombre: 'Teclado', 
+    precio: 150.00, 
+    stock: 4,
+    categoria: 'Teclado',
+    imagen: 'assets/images/teclado.jpg'
+  }
+];
 
   // Lista del carrito de compra
   private carrito: any[] = [];
